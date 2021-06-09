@@ -1,5 +1,5 @@
 # dpra
-This repo contains Differentially Private Resource Allocators (DPRAs) of different mechanism.
+This repo contains Differentially Private Resource Allocators (DPRAs) of different mechanisms.
 Theoretical utility comparison and tradeoff (between privacy and utility) can be reimpletmented by running the .py files named theo_utility_comparison and theo_tradeoff.py.
 simulation_lib.py includes defnitions for simulation of different mechnisms, including 
 - uniform mechanism (uni.py), 
