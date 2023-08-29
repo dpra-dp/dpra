@@ -5,17 +5,37 @@ import numpy as np
 import itertools
 from collections import Counter
 
+def geometric2(scale, miu):
+    """
+    Output:
+        The result of the geometric mechanism (x-y + true_answer).
+    numpy.random.geometric draws from p.d.f. f(k) = (1 - p)^{k - 1} p   (k=1,2,3...)
+                                                    p          -│k│
+    The difference of two draws has the p.d.f    ──────── (1 - p)
+                                                  2 - p
+    """
+    # Parameter p of the Geometric distribution as per class docstring
+    p = 1 - np.exp(-1 / scale)
+
+    x = np.random.geometric(p) - 1  # numpy geometrics start with 1
+    y = np.random.geometric(p) - 1
+
+    output = x - y + miu
+    return output
 
 # generating noise
 def get_noise(x0, k, x, p, c, lamda, noise_type, miu, s):
     if noise_type == 'uniform':
         return np.random.randint(x0, x + 1)
+    elif noise_type == 'geometric2':
+        return geometric2(scale = s, miu = miu)
     elif noise_type == 'geometric':
         a = np.random.geometric(p)
-        if a > x:
-            return x
-        else:
-            return a - 1 + x0
+        return a - 1 + x0
+        # if a > x:
+        #     return x
+        # else:
+        #     return a - 1 + x0
     elif noise_type == 'constant':
         return c
     elif noise_type == 'laplace':
@@ -41,15 +61,16 @@ def add_noise(x0, k, m, noise_type, x, p, c, lamda, miu, s):
     noise1 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
     noise2 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
 
-    while noise2 < 2:
-        noise2 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
+    # while noise2 < 2:
+    #     noise2 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
 
-    while noise1 < 1:
-        noise1 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
+    # while noise1 < 1:
+    #     noise1 = round(get_noise(x0=x0, k=k, x=x, p=p, c=c, lamda=lamda, noise_type=noise_type, miu=miu, s=s))
 
-    f_prime = m + V + noise1
+    f_prime = (m + V + noise1)
 
-    f = m + noise2
+    f = (m + noise2 + V - 1)
+    # print(f)
 
     return f, f_prime
 

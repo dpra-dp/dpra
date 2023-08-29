@@ -17,18 +17,16 @@ def plot_b0_b1(mal, F1, F2, x0, x):
     plt.savefig('geo1.pdf', bbox_inches="tight")
     plt.show()
 
-
 # Parameter default setup
 x = 20
 x0 = 0
 p = 0
-c = 0
+c = 10
 lamda = 0
 s = 0
 
 # special point test
-# noise_type = 'constant'
-noise_type = 'geometric'
+noise_type = 'constant'
 RD = 100000000  # rounds of simulation
 k = 10
 m = 10  # best strategy
@@ -65,8 +63,8 @@ for miu in OFFSET:
         print(p)
         plot_b0_b1(range(11), After_RA_F, After_RA_F_p, miu, p)
         r1 = non_inf(np.log(find_max(Before_RA_F, Before_RA_F_p)))
-        print('max index before RA (y):', r1.index(max(r1)) - abs(min(0, min(min(F), min(F_prime)))))
-        print(str(noise_type) + " - Simulation (k = " + str(k) + "), before RA:", max(r1))
+        # print('max index before RA (y):', r1.index(max(r1)) - abs(min(0, min(min(F), min(F_prime)))))
+        # print(str(noise_type) + " - Simulation (k = " + str(k) + "), before RA:", max(r1))
         r2 = non_inf(np.log(find_max(After_RA_F, After_RA_F_p)))
         print('max index (y):', r2.index(max(r2)))
         print(str(noise_type) + " - Simulation (k = " + str(k) + "), after RA:", max(r2))
