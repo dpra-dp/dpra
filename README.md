@@ -35,6 +35,10 @@ itertools
 
 collections
 
+### Memory Requirements
+We recommend having a minimum of ~18GB RAM available for the simulation
+
+
 ## How It Works
 In our paper, we proposed four different mechanism to achieve differentially private resource allocation:
 
