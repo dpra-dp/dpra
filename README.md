@@ -54,7 +54,7 @@ itertools
 collections
 
 ### Execution Time Estimations
-Each simulation of 100 million rounds takes about 9 - 10 mins on Apple M1 Pro with 32GB RAM running macOS Ventura 13.0.
+Each simulation of 100 million rounds takes about 9 - 12 mins on Apple M1 Pro with 32GB RAM running macOS Ventura 13.0.
 Plotting takes a few seconds.
 
 ## How It Works
