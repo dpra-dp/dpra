@@ -17,10 +17,28 @@ We hope this repo help you have a better understanding of DPRA.
 
 
 ## Requirements and Description
+
+### Hardware Dependencies
+Our results are produced mainly using Apple M1 Pro with 32GB RAM running macOS Ventura 13.0. 
+
+Beyond that, we have also tested our code on other platforms listed as follows:
+1. Ubuntu machine (Ubuntu 20.04.5 LTS with 256GB memory and an AMD 3970x CPU)
+2. Google Colab (Python 3 on a Google Compute Engine backend with 12.7 GB system RAM)
+
+The peak RAM utilization observed during our test on Apple M1 Pro was 18.1 GB. Thus, we recommend having a minimum of ~18GB RAM available for the simulation.
+
+### Software Dependencies
+#### OS Dependencies
+DPRA has been tested on macOS Ventura 13.0 and Ubuntu 20.04.5 LTS.
+
 ### Core Dependencies 
 Python 3.6+ 
 
+git
+
 pip3
+
+virtualenv (or conda)
  
 ### Python Dependencies
 numpy 
@@ -35,9 +53,9 @@ itertools
 
 collections
 
-### Memory Requirements
-We recommend having a minimum of ~18GB RAM available for the simulation
-
+### Execution Time Estimations
+Each simulation of 100 million rounds takes about 9 - 10 mins on Apple M1 Pro with 32GB RAM running macOS Ventura 13.0.
+Plotting takes a few seconds.
 
 ## How It Works
 In our paper, we proposed four different mechanism to achieve differentially private resource allocation:
